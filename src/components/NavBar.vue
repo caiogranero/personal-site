@@ -1,14 +1,14 @@
 <template>
-	<div id="navbar">
-		<b-container fluid>
+  <div id="navbar">
+    <b-container fluid>
       <b-row>
-        <b-col cols="2">
-					<h1>My Personal</h1>
+        <b-col md="2" sm="12">
+          <h1>My Personal</h1>
         </b-col>
-				<b-col></b-col>
+        <b-col></b-col>
       </b-row>
-		</b-container>		
-	</div>
+    </b-container>
+  </div>
 </template>
 
 <script>

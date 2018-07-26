@@ -118,4 +118,12 @@ span#black {
   font-size: 16px !important;
   color: #34444b;
 }
+
+i.clickable {
+  cursor: pointer;
+}
+
+i.clickable:hover {
+  color: #007bff;
+}
 </style>

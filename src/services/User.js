@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const UserInstance = axios.create({
-  baseURL: `${process.env.BASE_URL}/user`,
+  baseURL: `http://localhost:1234/api/usuarios`,
   timeout: 30000
 });
 
@@ -9,6 +9,10 @@ export default {
   install(Vue) {
     const UserService = {
       name: "UserService",
+
+      findAll() {
+        return UserInstance.get("/");
+      },
 
       get(params) {
         return UserInstance.get("/", {
@@ -20,6 +24,7 @@ export default {
         return UserInstance.get(`/${id}`);
       }
     };
+
     Vue.$UserService = UserService;
     Vue.prototype.$UserService = UserService;
   }
