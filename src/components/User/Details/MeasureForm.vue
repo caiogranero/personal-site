@@ -23,7 +23,7 @@
       </b-row>
     </b-container>
     <br>
-    <b-table small hover :fields="fields" :items="items">
+    <b-table small hover :fields="fields" :items="items" :current-page="page.currentPage" :per-page="page.perPage">
       <template slot="remover" slot-scope="cell">
         <b-button size="sm" @click="remove(cell.item)">
           <i class="fas fa-minus-circle clickable"></i>
@@ -34,7 +34,7 @@
     <b-container>
       <b-row class="text-center">
         <b-col md="12" class="my-1">
-          <b-pagination @input="changePage" align="center" :total-rows="page.totalRows" :per-page="page.perPage" v-model="page.currentPage" class="my-0" />
+          <b-pagination align="center" :total-rows="items.length" :per-page="page.perPage" v-model="page.currentPage" class="my-0" />
         </b-col>
       </b-row>
     </b-container>
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import iziToast from "izitoast";
+
 export default {
   name: "MeasureForm",
   data() {
@@ -49,31 +51,40 @@ export default {
       form: {
         name: ""
       },
-      fields: [{ key: "medida", label: "Medida" }, "remover"],
-      items: [
-        {
-          medida: "Gordura Corporal (%)"
-        },
-        {
-          medida: "Músculo (%)"
-        },
-        {
-          medida: "Idade Metabólica"
-        },
-        {
-          medida: "Peso"
-        }
-      ],
+      fields: [{ key: "nome", label: "Medida" }, "remover"],
+      items: [],
       page: {
-        totalRows: 8,
         perPage: 4,
         currentPage: 0
       }
     };
   },
+  created() {
+    const userId = this.$route.params.userId;
+    this.listarMedidas(userId);
+  },
   methods: {
+    listarMedidas(idUsuario) {
+      this.$MeasureService
+        .findAll(idUsuario)
+        .then(response => response.data.data.medidas)
+        .then(medidas => (this.items = medidas));
+    },
+
     remove(evt) {
-      console.log(evt);
+      const userId = this.$route.params.userId;
+      this.$MeasureService
+        .delete(userId, evt._id)
+        .then(() => this.listarMedidas(userId))
+        .then(() =>
+          iziToast.success({ title: "Dados alterados.", position: "topCenter" })
+        )
+        .catch(error => {
+          iziToast.error({
+            title: error.response.data.error,
+            position: "topCenter"
+          });
+        });
     },
 
     newMeasure(evt) {
@@ -84,16 +95,23 @@ export default {
       const userId = this.$route.params.userId;
 
       this.$MeasureService
-        .create(userId, {
-          nome: this.form.name
+        .create(userId, { nome: this.form.name })
+        .then(() => {
+          this.listarMedidas(userId);
+          this.form.name = "";
         })
         .then(() => {
-          this.form.name = "";
+          iziToast.success({
+            title: "Medida adicionada",
+            position: "topCenter"
+          });
+        })
+        .catch(error => {
+          iziToast.error({
+            title: error.response.data.error,
+            position: "topCenter"
+          });
         });
-    },
-
-    changePage() {
-      console.log(this.page.currentPage);
     }
   }
 };

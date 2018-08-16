@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import iziToast from "izitoast";
+
 export default {
   name: "DisesasesForm",
   data() {
@@ -52,6 +54,16 @@ export default {
         .then(() => {
           this.form.name = "";
           this.form.description = "";
+          iziToast.success({
+            title: "Remédio adicionado.",
+            position: "topCenter"
+          });
+        })
+        .catch(error => {
+          iziToast.error({
+            title: error.response.data.error,
+            position: "topCenter"
+          });
         });
     }
   }

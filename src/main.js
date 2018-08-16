@@ -4,18 +4,15 @@ import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 import BootstrapVue from "bootstrap-vue";
-// import bCol from "bootstrap-vue/es/components/layout/col";
-// import bContainer from "bootstrap-vue/es/components/layout/container";
-// import bRow from "bootstrap-vue/es/components/layout/row";
+import vSelect from "vue-select";
 
 import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap-vue/dist/bootstrap-vue.css";
-
-// Vue.component("b-col", bCol);
-// Vue.component("b-container", bContainer);
-// Vue.component("b-row", bRow);
+import "izitoast/dist/css/iziToast.css";
+import "slideout/dist/slideout.js";
 
 Vue.use(BootstrapVue);
+
+Vue.component("v-select", vSelect);
 
 Vue.config.productionTip = false;
 

@@ -1,23 +1,22 @@
 <template>
-	<div id="sidebar">
 		<div id="content">
-			<b-row id="logo">
+			<div id="logo">
 				<b-col md="12">
 					<router-link to="/">
 						<img src="./../assets/logo.png">
 					</router-link>
 				</b-col>
-			</b-row>
+			</div>
 
-			<b-row v-for="(route, index) in routes" :key="index" :class="route.class">
+			<div v-for="(route, index) in routes" :key="index" :class="route.class">
 				<b-col md="12">
 					<router-link :to="route.path">
-						<i :class="`fas ${route.icon} fa-2x`" style="color: rgb(228, 228, 228)"></i>
+						<i :class="`fas ${route.icon} fa-2x`" style="color: rgb(228, 228, 228)"></i> 
+            <!-- <span>Alunos</span> -->
 					</router-link>
 				</b-col>
-			</b-row>
+			</div>
 		</div>
-	</div>
 </template>
 
 <script>
@@ -27,7 +26,7 @@ export default {
     return {
       routes: [
         {
-          path: "/user",
+          path: "/usuarios",
           icon: "fa-user-friends",
           class: "route"
         }
@@ -42,10 +41,10 @@ export default {
   methods: {
     setCurrentRoute(route) {
       this.routes
-        .filter(r => r.path === route.path)
+        .filter(r => route.path.includes(r.path))
         .map(r => (r.class = "route current-route"));
       this.routes
-        .filter(r => r.path !== route.path)
+        .filter(r => !route.path.includes(r.path))
         .map(r => (r.class = "route"));
     }
   },

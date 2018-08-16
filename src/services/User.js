@@ -22,6 +22,10 @@ export default {
 
       getById(id) {
         return UserInstance.get(`/${id}`);
+      },
+
+      edit(id, params) {
+        return UserInstance.patch(`/${id}`, params);
       }
     };
 

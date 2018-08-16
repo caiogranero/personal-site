@@ -16,12 +16,19 @@ export default {
         });
       },
 
-      findAll(userId) {
-        return MeasureInstance.get(`/${userId}/medidas`);
+      findAll(userId, params) {
+        return MeasureInstance.get(`/${userId}/medidas`, params);
       },
 
       delete(userId, measureId) {
         return MeasureInstance.delete(`/${userId}/medidas/${measureId}`);
+      },
+
+      adicionarValorEmMedida(userId, measureId, { data, valor }) {
+        return MeasureInstance.post(`/${userId}/medidas/${measureId}/valor`, {
+          data,
+          valor
+        });
       }
     };
 

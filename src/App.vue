@@ -1,30 +1,32 @@
 <template>
   <div id="app">
-    <b-container fluid>
-      <b-row>
-        <div id="side-content" :style="{height:windowHeight}">
-          <side-bar></side-bar>
-        </div>
-        <div id="router-content">
-          <nav-bar></nav-bar>
-          <router-view/>
-        </div>
-      </b-row>
-    </b-container>
+    <nav id="menu">
+      <side-bar></side-bar>
+    </nav>
+  
+    <main id="panel">
+      <header>
+        <nav-bar></nav-bar>
+      </header>
+
+      <div id="router-content">
+        <router-view/>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 import SideBar from "@/components/SideBar";
 import NavBar from "@/components/NavBar";
+import moment from "moment";
+import Slideout from "slideout";
 
 export default {
   name: "App",
 
-  data() {
-    return {
-      windowHeight: "400px"
-    };
+  created() {
+    moment.locale("pt-BR");
   },
 
   components: {
@@ -32,23 +34,25 @@ export default {
     NavBar
   },
 
-  mounted() {
-    this.calcMapHeight();
+  methods: {
+    setupSlideout() {
+      const slideout = new Slideout({
+        panel: document.getElementById("panel"),
+        menu: document.getElementById("menu"),
+        padding: 200,
+        tolerance: 70
+      });
 
-    // TODO: Colocar debounce na funçao
-    window.onresize = () => {
-      this.calcMapHeight();
-    };
+      document
+        .querySelector(".toggle-button")
+        .addEventListener("click", function() {
+          slideout.toggle();
+        });
+    }
   },
 
-  methods: {
-    calcMapHeight() {
-      if (document.getElementsByTagName("html")[0]) {
-        const windowHeight = document.getElementsByTagName("html")[0]
-          .clientHeight;
-        this.windowHeight = windowHeight.toString() + "px";
-      }
-    }
+  mounted() {
+    this.setupSlideout();
   }
 };
 </script>
@@ -65,6 +69,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   background-color: #f7f8f9;
+  height: 100%;
 }
 
 #side-content {
@@ -75,17 +80,6 @@ export default {
   padding-left: 0px;
   flex: 0 0 5%;
   max-width: 5%;
-}
-
-#router-content {
-  // margin-top: 25px;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 0px;
-  padding-left: 0px;
-  flex: 0 0 95%;
-  max-width: 95%;
 }
 
 html * {
@@ -99,6 +93,7 @@ h2 {
   font-variant: normal !important;
   font-weight: 100 !important;
   line-height: 26.4px !important;
+  margin-bottom: 0px !important;
 }
 
 span {
@@ -125,5 +120,10 @@ i.clickable {
 
 i.clickable:hover {
   color: #007bff;
+}
+
+body {
+  width: 100%;
+  height: 100%;
 }
 </style>

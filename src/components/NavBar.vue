@@ -1,11 +1,16 @@
 <template>
   <div id="navbar">
-    <b-container fluid>
+    <b-container>
       <b-row>
-        <b-col md="2" sm="12">
-          <h1>My Personal</h1>
-        </b-col>
-        <b-col></b-col>
+        <!-- <b-col md="1" sm="2"> -->
+        <button class="toggle-button">
+          <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
+        </button>
+        <!-- </b-col>
+        <b-col md="2" sm="9"> -->
+        <h1>My Personal</h1>
+        <!-- </b-col> -->
+        <!-- <b-col></b-col> -->
       </b-row>
     </b-container>
   </div>
@@ -30,5 +35,12 @@ h1 {
   padding-top: 7px;
   padding-bottom: 7px;
   border-bottom: 2px solid #c4c5c6;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: 0px;
+  margin-left: 10px;
+  margin-right: 15px;
 }
 </style>

@@ -19,6 +19,10 @@ export default {
 
       findAll(userId) {
         return DrugInstance.get(`/${userId}/remedios`);
+      },
+
+      delete(idUsuario, idRemedio) {
+        return DrugInstance.delete(`/${idUsuario}/remedios/${idRemedio}`);
       }
     };
 

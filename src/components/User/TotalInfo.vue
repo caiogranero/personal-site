@@ -28,13 +28,13 @@ export default {
       infos: [
         {
           tipo: "Dados básicos",
-          qtd: 0,
-          event: "DADOS_BÁSICOS",
+          qtd: 1,
+          event: "DADOS_BASICOS",
           canAdd: false
         },
         {
           tipo: "Doenças crônicas",
-          qtd: 4,
+          qtd: 2,
           event: "DOENCAS_CRONICAS",
           canAdd: true
         },
@@ -46,13 +46,13 @@ export default {
         },
         {
           tipo: "Remédios",
-          qtd: 1,
+          qtd: 4,
           event: "REMEDIOS",
           canAdd: true
         },
         {
           tipo: "Observações",
-          qtd: 2,
+          qtd: 5,
           event: "OBSERVACOES",
           canAdd: true
         }
