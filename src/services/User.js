@@ -10,6 +10,10 @@ export default {
     const UserService = {
       name: "UserService",
 
+      getAlunos(id) {
+        return UserInstance.get(`/${id}/alunos`);
+      },
+
       findAll() {
         return UserInstance.get("/");
       },

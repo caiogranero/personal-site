@@ -71,8 +71,9 @@ export default {
     };
   },
   created() {
-    const userId = "";
-    this.$UserService.findAll({ personalId: userId }).then(usuarios => {
+    // const userId = "5b57ccb38e4ba8458c803b03";
+    // this.$UserService.getAlunos(userId).then(usuarios => {
+    this.$UserService.findAll().then(usuarios => {
       this.items = usuarios.data.data.map(x =>
         Object.assign(x, {
           idade: moment(x.nascimento).fromNow(true),
