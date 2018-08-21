@@ -15,15 +15,11 @@
       <b-col md="1"></b-col>
       <b-col md="5" class="justify-content-md-center" align-self="center">
         <b-form @submit="onSubmit">
-          <!-- <b-form-group horizontal size="md"> -->
             <b-form-input type="email" v-model="form.email" required placeholder="Email" size="md">
             </b-form-input>
-          <!-- </b-form-group> -->
             <br>
-          <!-- <b-form-group size="md" horizontal> -->
-            <b-form-input type="password" v-model="form.password" size="md" required placeholder="Senha">
+            <b-form-input type="password" v-model="form.senha" size="md" required placeholder="Senha">
             </b-form-input>
-          <!-- </b-form-group> -->
             <br>
           <b-button type="submit" variant="primary">
             ACESSAR
@@ -40,18 +36,34 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
+import iziToast from "izitoast";
+
 export default {
   name: "Login",
   data() {
     return {
       form: {
         email: "",
-        password: ""
+        senha: ""
       }
     };
   },
   methods: {
-    onSubmit() {}
+    onSubmit() {
+      this.$AuthService
+        .doLogin(this.form)
+        .then(result => {
+          Cookies.set("PERSONAL-TOKEN", result.data.data);
+          this.$router.push({ name: "Usuarios" });
+        })
+        .catch(error => {
+          iziToast.error({
+            title: error.response.data.error,
+            position: "topCenter"
+          });
+        });
+    }
   }
 };
 </script>

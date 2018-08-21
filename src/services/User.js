@@ -1,9 +1,12 @@
+import MiddlewareUtils from "./MiddlewareUtils";
 import axios from "axios";
 
 const UserInstance = axios.create({
   baseURL: `http://localhost:1234/api/usuarios`,
   timeout: 30000
 });
+
+MiddlewareUtils.useAuth(UserInstance);
 
 export default {
   install(Vue) {

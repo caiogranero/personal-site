@@ -1,9 +1,12 @@
 import axios from "axios";
+import MiddlewareUtils from "./MiddlewareUtils";
 
 const DrugInstance = axios.create({
   baseURL: `http://localhost:1234/api/usuarios/`,
   timeout: 30000
 });
+
+MiddlewareUtils.useAuth(DrugInstance);
 
 export default {
   install(Vue) {

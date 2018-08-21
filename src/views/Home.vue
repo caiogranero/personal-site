@@ -26,10 +26,6 @@ export default {
       users: []
     };
   },
-  created() {
-    this.$UserService.findAll().then(users => {
-      this.users = users.data.data;
-    });
-  }
+  created() {}
 };
 </script>

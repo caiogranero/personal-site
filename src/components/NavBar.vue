@@ -2,21 +2,24 @@
   <div id="navbar">
     <b-container>
       <b-row>
-        <!-- <b-col md="1" sm="2"> -->
-        <button class="toggle-button">
+        <button class="toggle-button" v-show="!isLogging">
           <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
         </button>
-        <!-- </b-col>
-        <b-col md="2" sm="9"> -->
         <h1>My Personal</h1>
-        <!-- </b-col> -->
-        <!-- <b-col></b-col> -->
       </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
+export default {
+  name: "NavBar",
+  computed: {
+    isLogging() {
+      return this.$route.path.includes("login");
+    }
+  }
+};
 </script>
 
 <style>

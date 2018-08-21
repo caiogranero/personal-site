@@ -25,6 +25,12 @@ import Slideout from "slideout";
 export default {
   name: "App",
 
+  data() {
+    return {
+      slideout: null
+    };
+  },
+
   created() {
     moment.locale("pt-BR");
   },
@@ -43,11 +49,23 @@ export default {
         tolerance: 70
       });
 
+      this.slideout = slideout;
+
       document
         .querySelector(".toggle-button")
         .addEventListener("click", function() {
           slideout.toggle();
         });
+    }
+  },
+
+  watch: {
+    $route(to) {
+      if (to.path.includes("login")) {
+        if (this.slideout.isOpen()) {
+          this.slideout.close();
+        }
+      }
     }
   },
 
