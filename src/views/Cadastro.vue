@@ -4,9 +4,9 @@
     <b-container>
     <b-row>
       <b-col md="12">
-        <h2><strong>Acesse sua conta</strong></h2>
+        <h2><strong>Inscrever-se com seu endereço de e-mail</strong></h2>
         <br>
-        <strong>Não tem uma conta ainda? <router-link to="Cadastro">Cadastre-se</router-link></strong>
+        <strong>Já tem uma conta? <router-link to="Cadastro">Entrar</router-link></strong>
       </b-col>
     </b-row>
     
@@ -15,6 +15,9 @@
       <b-col md="1"></b-col>
       <b-col md="5" class="justify-content-md-center" align-self="center">
         <b-form @submit="onSubmit">
+            <b-form-input type="text" v-model="form.nome" required placeholder="Nome" size="md">
+            </b-form-input>
+            <br>
             <b-form-input type="email" v-model="form.email" required placeholder="Email" size="md">
             </b-form-input>
             <br>
@@ -40,10 +43,11 @@ import Cookies from "js-cookie";
 import iziToast from "izitoast";
 
 export default {
-  name: "Login",
+  name: "Cadastro",
   data() {
     return {
       form: {
+        nome: "",
         email: "",
         senha: ""
       }
@@ -51,11 +55,21 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$AuthService
-        .doLogin(this.form)
-        .then(result => {
-          Cookies.set("PERSONAL-TOKEN", result.data.data);
-          this.$router.push({ name: "Usuarios" });
+      this.$UserService
+        .novoPersonal(this.form)
+        .then(() => {
+          this.$AuthService
+            .doLogin(this.form)
+            .then(result => {
+              Cookies.set("PERSONAL-TOKEN", result.data.data);
+              this.$router.push({ name: "Usuarios" });
+            })
+            .catch(error => {
+              iziToast.error({
+                title: error.response.data.error,
+                position: "topCenter"
+              });
+            });
         })
         .catch(error => {
           iziToast.error({

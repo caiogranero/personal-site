@@ -5,7 +5,7 @@
         <button class="toggle-button" v-show="!isLogging">
           <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
         </button>
-        <h1>My Personal</h1>
+        <h1 :class="titleClass">My Personal</h1>
       </b-row>
     </b-container>
   </div>
@@ -16,7 +16,15 @@ export default {
   name: "NavBar",
   computed: {
     isLogging() {
-      return this.$route.path.includes("login");
+      return this.$route.path.toLowerCase().includes("login");
+    },
+
+    titleClass() {
+      if (this.isLogging) {
+        return "space";
+      }
+
+      return "";
     }
   }
 };
@@ -45,5 +53,9 @@ h1 {
   border: 0px;
   margin-left: 10px;
   margin-right: 15px;
+}
+
+.space {
+  margin-left: 15px;
 }
 </style>

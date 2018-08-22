@@ -16,10 +16,20 @@
 					</router-link>
 				</b-col>
 			</div>
+
+      <div class="route" id="logout">
+				<b-col md="12">
+					<a @click="logout">
+						<i class="fas fa-sign-out-alt fa-2x" style="color: rgb(228, 228, 228)"></i> 
+					</a>
+				</b-col>
+			</div>
 		</div>
 </template>
 
 <script>
+import Cookies from "js-cookie";
+
 export default {
   name: "SideBar",
   data() {
@@ -39,6 +49,10 @@ export default {
   },
 
   methods: {
+    logout() {
+      Cookies.remove("PERSONAL-TOKEN");
+      this.$router.push("Login");
+    },
     setCurrentRoute(route) {
       this.routes
         .filter(r => route.path.includes(r.path))
@@ -83,5 +97,14 @@ export default {
 .route {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+#logout {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
 }
 </style>

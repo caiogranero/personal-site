@@ -61,7 +61,8 @@ export default {
 
   watch: {
     $route(to) {
-      if (to.path.includes("login")) {
+      console.log(to.path);
+      if (to.path.toLowerCase().includes("login")) {
         if (this.slideout.isOpen()) {
           this.slideout.close();
         }
