@@ -13,16 +13,17 @@ export default {
     const UserService = {
       name: "UserService",
 
-      novoPersonal({ nome, email, senha }) {
+      novoUsuario({ nome, email, senha }, code) {
         return UserInstance.post("/", {
           nome,
           email,
           senha,
-          type: 1
+          code
         });
       },
 
       getAlunos(id) {
+        console.log(id);
         return UserInstance.get(`/${id}/alunos`);
       },
 

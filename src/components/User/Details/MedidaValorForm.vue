@@ -61,6 +61,12 @@ export default {
   },
   created() {
     this.form.data = moment().format("YYYY-MM-DD");
+
+    const userId = this.$route.params.userId;
+    this.$MeasureService
+      .findAll(userId, "")
+      .then(response => response.data.data.medidas)
+      .then(medidas => (this.medidas = medidas));
   },
   methods: {
     buscarMedidas: _.debounce((userId, term, _this) => {

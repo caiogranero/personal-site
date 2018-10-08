@@ -21,6 +21,8 @@ import SideBar from "@/components/SideBar";
 import NavBar from "@/components/NavBar";
 import moment from "moment";
 import Slideout from "slideout";
+import Cookies from "js-cookie";
+const jwtDecode = require("jwt-decode");
 
 export default {
   name: "App",
@@ -33,6 +35,10 @@ export default {
 
   created() {
     moment.locale("pt-BR");
+    this.$store.commit(
+      "setCurrentUser",
+      jwtDecode(Cookies.get("PERSONAL-TOKEN"))
+    );
   },
 
   components: {
@@ -61,7 +67,6 @@ export default {
 
   watch: {
     $route(to) {
-      console.log(to.path);
       if (to.path.toLowerCase().includes("login")) {
         if (this.slideout.isOpen()) {
           this.slideout.close();

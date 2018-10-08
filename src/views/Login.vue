@@ -38,6 +38,7 @@
 <script>
 import Cookies from "js-cookie";
 import iziToast from "izitoast";
+const jwtDecode = require("jwt-decode");
 
 export default {
   name: "Login",
@@ -55,7 +56,11 @@ export default {
         .doLogin(this.form)
         .then(result => {
           Cookies.set("PERSONAL-TOKEN", result.data.data);
-          this.$router.push({ name: "Usuarios" });
+          this.$store.commit("setCurrentUser", jwtDecode(result.data.data));
+
+          setTimeout(() => {
+            this.$router.push({ name: "Usuarios" });
+          }, 300);
         })
         .catch(error => {
           iziToast.error({

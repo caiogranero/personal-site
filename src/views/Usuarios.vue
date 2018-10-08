@@ -11,6 +11,13 @@ export default {
   name: "Usuarios",
   components: {
     ListagemUsuarios
+  },
+  created() {
+    const currentUser = this.$store.state.currentUser;
+
+    if (currentUser.type === "Aluno") {
+      this.$router.push(`/usuarios/${currentUser.id}`);
+    }
   }
 };
 </script>

@@ -6,7 +6,7 @@
       <b-col md="12">
         <h2><strong>Inscrever-se com seu endereço de e-mail</strong></h2>
         <br>
-        <strong>Já tem uma conta? <router-link to="Cadastro">Entrar</router-link></strong>
+        <strong>Já tem uma conta? <router-link to="Login">Entrar</router-link></strong>
       </b-col>
     </b-row>
     
@@ -55,8 +55,10 @@ export default {
   },
   methods: {
     onSubmit() {
+      const code = this.$route.query.code;
+
       this.$UserService
-        .novoPersonal(this.form)
+        .novoUsuario(this.form, code)
         .then(() => {
           this.$AuthService
             .doLogin(this.form)

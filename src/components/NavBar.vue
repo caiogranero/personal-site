@@ -2,7 +2,7 @@
   <div id="navbar">
     <b-container>
       <b-row>
-        <button class="toggle-button" v-show="!isLogging">
+        <button class="toggle-button" v-show="displayMenu">
           <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
         </button>
         <h1 :class="titleClass">My Personal</h1>
@@ -15,12 +15,13 @@
 export default {
   name: "NavBar",
   computed: {
-    isLogging() {
-      return this.$route.path.toLowerCase().includes("login");
+    displayMenu() {
+      const exception = ["login", "cadastro", ""];
+      return !exception.some(x => this.$route.path.toLowerCase().includes(x));
     },
 
     titleClass() {
-      if (this.isLogging) {
+      if (this.displayMenu) {
         return "space";
       }
 
