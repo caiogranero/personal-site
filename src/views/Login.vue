@@ -58,9 +58,9 @@ export default {
           Cookies.set("PERSONAL-TOKEN", result.data.data);
           this.$store.commit("setCurrentUser", jwtDecode(result.data.data));
 
-          setTimeout(() => {
-            this.$router.push({ name: "Usuarios" });
-          }, 300);
+          // setTimeout(() => {
+          this.$router.push({ name: "Usuarios" });
+          // }, 300);
         })
         .catch(error => {
           iziToast.error({

@@ -1,14 +1,14 @@
 <template>
   <div class="listagem-usuario">
     <br>
-    <b-container>
+    <b-container fluid>
       <b-row>
         <b-col>
           <h3>Meus alunos</h3>
         </b-col>
       </b-row>
     </b-container>  
-    <b-container>
+    <b-container fluid>
       <b-row>
         <b-col>
           <b-table hover :responsive="true" :outlined="true" :fields="fields" :items="items" :current-page="page.currentPage" :per-page="page.perPage">
@@ -19,7 +19,7 @@
             </template>
           </b-table>
 
-          <b-container>
+          <b-container fluid>
             <b-row class="text-center">
               <b-col md="12" class="my-1">
                 <b-pagination align="center" :total-rows="items.length" :per-page="page.perPage" v-model="page.currentPage" class="my-0" />

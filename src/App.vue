@@ -29,7 +29,8 @@ export default {
 
   data() {
     return {
-      slideout: null
+      slideout: null,
+      exception: ["/login", "/cadastro", "/"]
     };
   },
 
@@ -67,8 +68,8 @@ export default {
 
   watch: {
     $route(to) {
-      if (to.path.toLowerCase().includes("login")) {
-        if (this.slideout.isOpen()) {
+      if (this.exception.some(x => to.path.toLowerCase() === x)) {
+        if (this.slideout && this.slideout.isOpen()) {
           this.slideout.close();
         }
       }
@@ -149,5 +150,10 @@ i.clickable:hover {
 body {
   width: 100%;
   height: 100%;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("../public/Arciform.otf");
 }
 </style>

@@ -23,7 +23,6 @@ export default {
       },
 
       getAlunos(id) {
-        console.log(id);
         return UserInstance.get(`/${id}/alunos`);
       },
 

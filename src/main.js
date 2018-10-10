@@ -10,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import "izitoast/dist/css/iziToast.css";
 import "slideout/dist/slideout.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 Vue.use(BootstrapVue);
 
 Vue.component("v-select", vSelect);

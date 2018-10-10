@@ -12,8 +12,15 @@
 				<b-col md="12">
 					<router-link :to="route.path">
 						<i :class="`fas ${route.icon} fa-2x`" style="color: rgb(228, 228, 228)"></i> 
-            <!-- <span>Alunos</span> -->
 					</router-link>
+				</b-col>
+			</div>
+
+      <div class="route">
+				<b-col md="12">
+					<a @click="share">
+            <i class="fas fa-envelope-open fa-2x" style="color: rgb(228, 228, 228)"></i>
+					</a>
 				</b-col>
 			</div>
 
@@ -49,6 +56,7 @@ export default {
   },
 
   methods: {
+    share() {},
     logout() {
       Cookies.remove("PERSONAL-TOKEN");
       this.$router.push("Login");
@@ -74,7 +82,7 @@ export default {
 <style>
 #sidebar {
   height: 100%;
-  background-color: #2f323a;
+  background-color: #007bff;
 }
 
 #logo {
