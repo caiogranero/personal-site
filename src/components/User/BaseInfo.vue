@@ -5,7 +5,7 @@
         <b-col md="3" sm="12">
           <b-row id="basic" class="text-center">
             <b-col md="4" sm="12">
-              <img src="@/assets/profile.jpg" id="profile">
+              <img :src="user.picture" id="profile"> 
             </b-col>
             <b-col md="8" sm="12">
               <h2>{{user.nome}}</h2>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import ImagemPerfilMasculino from "@/assets/profile-mars.png";
+import ImagemPerfilFeminino from "@/assets/profile-venus.png";
 import CustomSelect from "@/components/CustomSelect";
 import moment from "moment";
 import _ from "lodash";
@@ -63,7 +65,8 @@ export default {
         idade: "0 anos",
         doença: "-",
         nascimento: "Data não informada",
-        telefone: "(00) 0000-0000"
+        telefone: "(00) 0000-0000",
+        picture: ""
       }
     };
   },
@@ -95,8 +98,12 @@ export default {
 
         if (data.genero === 2) {
           this.user.genero = "mars";
+          this.user.picture = ImagemPerfilMasculino;
         } else if (data.genero === 1) {
           this.user.genero = "venus";
+          this.user.picture = ImagemPerfilFeminino;
+        } else {
+          this.user.picture = ImagemPerfilFeminino;
         }
 
         if (data.altura) {

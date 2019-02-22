@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
 import UserProfile from "./views/UserProfile.vue";
 import Usuarios from "./views/Usuarios.vue";
 import Login from "./views/Login.vue";
@@ -12,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
-      component: Home
+      name: "Login",
+      component: Login
     },
     {
       path: "/login",

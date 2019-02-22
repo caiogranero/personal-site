@@ -1,14 +1,19 @@
 <template>
   <div id="navbar">
     <b-container fluid>
-      <b-row>
-        <button class="toggle-button" v-show="displayMenu">
-          <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
-        </button>
-        <label v-show="!displayMenu" style="margin-left: 40px;"></label>
-        <h1 :class="titleClass">treine.me</h1>
-      </b-row>
-    
+      <b-row align-h="between">
+          <button class="toggle-button" v-show="displayMenu">
+            <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
+          </button>
+          <label v-show="!displayMenu" style="margin-left: 40px;"></label>
+          
+          <h1 :class="titleClass">treine.club</h1>
+          
+          <label v-show="!displayConvidarAluno" style="margin-left: 40px;"></label>
+          <b-button @click="copiarCodigo" type="submit" variant="light" size="sm" id="btn-convitar-aluno" v-show="displayConvidarAluno">
+            CONVIDAR ALUNO
+          </b-button>
+      </b-row>    
     </b-container>
   </div>
 </template>
@@ -26,6 +31,13 @@ export default {
       return !this.exception.some(x => this.$route.path.toLowerCase() === x);
     },
 
+    displayConvidarAluno() {
+      return (
+        !this.exception.some(x => this.$route.path.toLowerCase() === x) &&
+        this.$store.state.currentUser.type === "Personal"
+      );
+    },
+
     titleClass() {
       if (this.displayMenu) {
         return "space";
@@ -33,18 +45,37 @@ export default {
 
       return "";
     }
+  },
+  methods: {
+    copiarCodigo() {
+      const code = this.$store.state.currentUser.code;
+      const text = `Olá, vem ser meu aluno no treine.club, você só precisa acessar esse link: ${
+        window.location.origin
+      }/?#/Cadastro?code=${code}`;
+      navigator.clipboard.writeText(text).then(
+        () => {
+          console.log(this);
+          this.$swal(
+            "URL de convite foi copiada!",
+            "Agora é só enviar para seus alunos e eles terão acesso ao treine.club",
+            "success"
+          );
+          console.log("Async: Copying to clipboard was successful!");
+        },
+        err => {
+          console.error("Async: Could not copy text: ", err);
+        }
+      );
+    }
   }
 };
 </script>
 
 <style>
 h1 {
-  /* font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif !important; */
   font-family: myFirstFont !important;
   font-size: 22px !important;
   font-style: normal !important;
-  /* font-variant: small-caps !important;
-  font-weight: 400 !important;*/
   line-height: 30px !important;
   color: white !important;
 }
@@ -60,11 +91,11 @@ h1 {
   color: white;
   background-color: transparent;
   border: 0px;
-  margin-left: 10px;
-  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.space {
-  margin-left: 15px;
+#btn-convitar-aluno {
+  margin-right: 15px;
+  border-radius: 30px;
 }
 </style>

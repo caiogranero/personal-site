@@ -28,6 +28,8 @@
             ACESSAR
           </b-button>
         </b-form>
+        <br>
+        <facebook-button></facebook-button>
       </b-col>
       <b-col md="5" class="login-image">
         <img src="/img/Kettle_Bell.png">
@@ -39,6 +41,7 @@
 </template>
 
 <script>
+import FacebookButton from "@/components/FacebookButton.vue";
 import Cookies from "js-cookie";
 import iziToast from "izitoast";
 
@@ -52,6 +55,9 @@ export default {
         senha: ""
       }
     };
+  },
+  components: {
+    FacebookButton
   },
   methods: {
     onSubmit() {

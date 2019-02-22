@@ -36,10 +36,12 @@ export default {
 
   created() {
     moment.locale("pt-BR");
-    this.$store.commit(
-      "setCurrentUser",
-      jwtDecode(Cookies.get("PERSONAL-TOKEN"))
-    );
+    if (Cookies.get("PERSONAL-TOKEN")) {
+      this.$store.commit(
+        "setCurrentUser",
+        jwtDecode(Cookies.get("PERSONAL-TOKEN"))
+      );
+    }
   },
 
   components: {
@@ -139,7 +141,7 @@ span#black {
   color: #34444b;
 }
 
-i.clickable {
+.clickable {
   cursor: pointer;
 }
 

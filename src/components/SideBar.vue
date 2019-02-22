@@ -16,14 +16,6 @@
 				</b-col>
 			</div>
 
-      <div class="route">
-				<b-col md="12">
-					<a @click="share">
-            <i class="fas fa-envelope-open fa-2x" style="color: rgb(228, 228, 228)"></i>
-					</a>
-				</b-col>
-			</div>
-
       <div class="route" id="logout">
 				<b-col md="12">
 					<a @click="logout">
@@ -56,10 +48,17 @@ export default {
   },
 
   methods: {
-    share() {},
     logout() {
-      Cookies.remove("PERSONAL-TOKEN");
-      this.$router.push("Login");
+      if (window.FB.getAccessToken()) {
+        window.FB.logout(response => {
+          console.log(response);
+          Cookies.remove("PERSONAL-TOKEN");
+          this.$router.push("Login");
+        });
+      } else {
+        Cookies.remove("PERSONAL-TOKEN");
+        this.$router.push("Login");
+      }
     },
     setCurrentRoute(route) {
       this.routes
@@ -90,7 +89,7 @@ export default {
 }
 
 #logo img {
-  height: 50px;
+  height: 100px;
 }
 
 #content {

@@ -17,6 +17,16 @@ export default {
             senha
           }
         });
+      },
+
+      doFacebookLogin({ email, facebookId, nome }) {
+        return AuthInstance.get(`/facebook`, {
+          params: {
+            email,
+            facebookId,
+            nome
+          }
+        });
       }
     };
 
