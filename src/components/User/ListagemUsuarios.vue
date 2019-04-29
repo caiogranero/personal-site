@@ -97,10 +97,7 @@ export default {
             x.nome.toLowerCase().includes("peso")
           );
 
-          console.log(peso);
-
           if (peso && peso.valores.length > 0) {
-            console.log("oi");
             const valor = peso.valores[peso.valores.length - 1].valor;
             mm.peso = `Peso: ${valor} Kg`;
           }

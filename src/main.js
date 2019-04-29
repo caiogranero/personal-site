@@ -11,6 +11,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "izitoast/dist/css/iziToast.css";
 import "slideout/dist/slideout.js";
 
+import "@/directives/focus.js";
+
 import dotenv from "dotenv";
 dotenv.config();
 

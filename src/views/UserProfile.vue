@@ -1,7 +1,15 @@
 <template>
   <div class="user-profile">
     <base-info></base-info>
-    <br><br>
+    <br>
+    <b-container>
+      <b-row>
+        <b-col md="2">
+          <b-button block @click="goTo()" >Treinos</b-button>
+        </b-col>
+      </b-row>
+    </b-container>
+    <br>
     <b-container>
       <b-row>
         <b-col md="5" sm="12" class="background-view">
@@ -88,6 +96,11 @@ export default {
       });
 
       this.events[evt.event][evt.type] = true;
+    },
+    goTo() {
+      const currentUser = this.$route.params.userId;
+
+      this.$router.push(`/usuarios/${currentUser}/treinos`);
     }
   },
 

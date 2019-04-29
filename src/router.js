@@ -4,6 +4,7 @@ import UserProfile from "./views/UserProfile.vue";
 import Usuarios from "./views/Usuarios.vue";
 import Login from "./views/Login.vue";
 import Cadastro from "./views/Cadastro.vue";
+import Treinos from "./views/Treinos.vue";
 
 Vue.use(Router);
 
@@ -33,6 +34,11 @@ export default new Router({
       path: "/usuarios/:userId",
       name: "UserProfile",
       component: UserProfile
+    },
+    {
+      path: "/usuarios/:userId/treinos",
+      name: "Treinos",
+      component: Treinos
     }
   ]
 });

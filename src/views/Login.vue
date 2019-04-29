@@ -72,7 +72,8 @@ export default {
   },
 
   methods: {
-    onSubmit() {
+    onSubmit($evt) {
+      $evt.preventDefault();
       this.$AuthService
         .doLogin(this.form)
         .then(result => {
