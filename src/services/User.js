@@ -13,15 +13,6 @@ export default {
     const UserService = {
       name: "UserService",
 
-      novoUsuario({ nome, email, senha }, code) {
-        return UserInstance.post("/", {
-          nome,
-          email,
-          senha,
-          code
-        });
-      },
-
       getAlunos(id) {
         return UserInstance.get(`/${id}/alunos`);
       },
