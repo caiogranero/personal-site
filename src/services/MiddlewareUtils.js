@@ -28,7 +28,9 @@ const MiddlewareUtils = {
           position: "topCenter"
         });
 
-        router.push({ name: "Login" });
+        if (401 === error.response.status) {
+          router.push({ name: "Login" });
+        }
 
         return Promise.reject(error);
       }

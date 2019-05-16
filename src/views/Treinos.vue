@@ -46,34 +46,13 @@
       </b-row>
     </b-container>
 
-    <b-container>
+    <!-- <b-container>
       <b-row style="justify-content: space-around;">
-        <b-col md="5" sm="12" class="background-view" v-for="(s,index) in sessao" :key="s.ordem">
-          <h3 v-on:click="enableEdit(index)" v-if="!s.titulo.edit" class="treino-titulo">{{s.titulo.title}}</h3>
-          <input
-            type="text"
-            class="edit_item"
-            v-model="s.titulo.title"
-            v-if="s.titulo.edit"
-            ref="search"
-            v-focus
-            v-on:keyup.enter="disableEdit(index)"
-            v-on:blur="disableEdit(index)"
-          >
-
-          <br>
-
-          <b-row>
-            <b-table striped hover :items="s.exercicios" :small="true">
-              <template slot="exercicio" slot-scope="row">
-                <b-form-select :options="objetivos" v-model="treino.objetivo" size="sm"/>
-              </template>
-            </b-table>
-          </b-row>
-
+        <b-col md="5" sm="12" class="background-view" v-for="(s,index) in grupo" :key="s.ordem">
+          
         </b-col>
       </b-row>
-    </b-container>
+    </b-container> -->
   </div>
 </template>
 
@@ -84,67 +63,26 @@ export default {
   components: { BaseInfo },
   data() {
     return {
-      alunos: [],
-      form: {
-        aluno: ""
-      },
-      directives: {
-        inserted(el) {
-          el.focus();
-        }
-      },
       treino: {
-        nome: "",
         observacao: "",
         dataInicio: "",
-        dataFim: "",
+        dataFinal: "",
         objetivo: ""
       },
-      objetivos: [],
-      sessao: [
-        {
-          titulo: {
-            title: "Nova sessão",
-            edit: false
-          },
-          exercicios: [
-            {
-              ordem: 0,
-              exercicio: "",
-              repeticoes: 0,
-              serie: 0,
-              descanso: 0
-            }
-          ]
-        }
-      ]
+      objetivos: []
     };
   },
   created() {
-    if (this.$route.params.userId) {
-      const userId = this.$route.params.userId;
-
-      this.$UserService
-        .getById(userId)
-        .then(usuario => usuario.data.data)
-        .then(usuario => {
-          return {
-            value: usuario._id,
-            text: usuario.nome
-          };
-        })
-        .then(aluno => (this.alunos = [aluno]))
-        .then(aluno => (this.form.aluno = aluno));
-    }
+    this.$GoalsService
+      .find()
+      .then(result => {
+        this.objetivos = result.data.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
-  methods: {
-    enableEdit(index) {
-      this.sessao[index].titulo.edit = true;
-    },
-    disableEdit(index) {
-      this.sessao[index].titulo.edit = false;
-    }
-  }
+  methods: {}
 };
 </script>
 
