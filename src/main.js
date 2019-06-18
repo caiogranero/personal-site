@@ -16,6 +16,8 @@ import "@/directives/focus.js";
 
 import firebase from "firebase";
 
+import "bootstrap-social/bootstrap-social.css";
+
 import dotenv from "dotenv";
 dotenv.config();
 

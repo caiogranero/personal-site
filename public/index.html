@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!-- <link rel="manifest" href="<%= BASE_URL %>manifest.json"> -->
-  <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
+  <link rel="manifest" crossorigin="use-credentials" href="<%= BASE_URL %>manifest.json">
+  <!-- <link rel="manifest" crossorigin="use-credentials" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json"> -->
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <!-- <link rel="stylesheet" href="/izitoast/dist/css/iziToast.min.css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -15,8 +15,6 @@
 </head>
 
 <body>
-  <div id="fb-root"></div>
-  <script async defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=2309174122509812&autoLogAppEvents=1"></script>
   <noscript>
     <strong>We're sorry but personal-site doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
@@ -51,6 +49,8 @@
     position: relative;
     z-index: 1;
     will-change: transform;
+    min-height: 100vh; 
+    background-color: #f7f8f9;
   }
 
   .slideout-open,
@@ -62,4 +62,13 @@
   .slideout-open .slideout-menu {
     display: block;
   }
+
+  .slideout-menu-left {
+    left: 0;
+  }
+
+  .slideout-menu-right {
+    right: 0;
+  }
+
 </style>

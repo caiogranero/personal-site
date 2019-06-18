@@ -1,9 +1,13 @@
 <template>
   <div class="login">
-    <br>
-    <br>
     <b-container>
       <b-row>
+        <b-col md="12">
+          <img :src="logo" width="150">
+        </b-col>
+      </b-row>
+
+      <b-row style="margin-top: -20px">
         <b-col md="12">
           <h2>
             <strong>Inscrever-se com seu endereço de e-mail</strong>
@@ -33,10 +37,18 @@
               placeholder="Senha"
             ></b-form-input>
             <br>
-            <b-button type="submit" variant="primary">CADASTRAR</b-button>
+            <b-button block type="submit" variant="primary">CADASTRAR</b-button>
           </b-form>
           <br>
-          <!-- <facebook-button></facebook-button> -->
+          
+          <b-row>
+            <b-col md="6">
+              <facebook-button></facebook-button>
+            </b-col>
+            <b-col md="6">
+              <google-button></google-button>
+            </b-col>
+          </b-row>
         </b-col>
         <b-col md="5" class="login-image">
           <img src="/img/Kettle_Bell.png">
@@ -49,8 +61,10 @@
 
 <script>
 import FacebookButton from "@/components/FacebookButton.vue";
+import GoogleButton from "@/components/GoogleButton.vue";
 import Cookies from "js-cookie";
 import iziToast from "izitoast";
+import Logo from "@/assets/logo-2.png";
 const jwtDecode = require("jwt-decode");
 
 export default {
@@ -64,8 +78,14 @@ export default {
       }
     };
   },
+  computed: {
+    logo() {
+      return Logo;
+    }
+  },
   components: {
-    FacebookButton
+    FacebookButton,
+    GoogleButton
   },
   methods: {
     onSubmit($evt) {
@@ -82,9 +102,8 @@ export default {
           });
         })
         .catch(error => {
-          console.log(error);
           iziToast.error({
-            title: error.response.data.error,
+            title: error.message ? error.message : error.response.data.error,
             position: "topCenter"
           });
         });

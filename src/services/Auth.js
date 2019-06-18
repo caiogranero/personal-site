@@ -17,6 +17,10 @@ export default {
     const AuthService = {
       name: "AuthService",
 
+      logout() {
+        return firebase.auth().signOut();
+      },
+
       doLogin({ email, senha }) {
         return firebase
           .auth()
@@ -33,7 +37,34 @@ export default {
 
       doFacebookLogin() {
         let provider = new firebase.auth.FacebookAuthProvider();
-        return firebase.auth().signInWithPopup(provider);
+        return this.checkSocialUser(provider);
+      },
+
+      checkSocialUser(provider) {
+        return firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then(result => {
+            const firebaseId = result.user.uid;
+            return this.getTokenByFirebaseId(firebaseId)
+              .then(currentToken => currentToken)
+              .catch(() => {
+                return result.user.getIdToken(true).then(tokenId => {
+                  return this.localRegister({
+                    nome: result.user.displayName,
+                    email: result.user.email,
+                    firebaseId,
+                    tokenId,
+                    code: undefined
+                  }).then(() => this.getTokenByFirebaseId(firebaseId));
+                });
+              });
+          });
+      },
+
+      doGoogleLogin() {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        return this.checkSocialUser(provider);
       },
 
       doRegister({ nome, email, senha }, code) {
@@ -66,6 +97,14 @@ export default {
           firebaseId,
           tokenId,
           code
+        });
+      },
+
+      getTokenByFirebaseId(firebaseId) {
+        return TokenInstance.get(`/`, {
+          params: {
+            firebaseId
+          }
         });
       }
     };

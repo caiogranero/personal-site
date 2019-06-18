@@ -49,16 +49,10 @@ export default {
 
   methods: {
     logout() {
-      if (window.FB.getAccessToken()) {
-        window.FB.logout(response => {
-          console.log(response);
-          Cookies.remove("PERSONAL-TOKEN");
-          this.$router.push("Login");
-        });
-      } else {
+      this.$AuthService.logout().then(() => {
         Cookies.remove("PERSONAL-TOKEN");
         this.$router.push("Login");
-      }
+      });
     },
     setCurrentRoute(route) {
       this.routes

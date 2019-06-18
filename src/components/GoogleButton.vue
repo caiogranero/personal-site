@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button class="btn btn-block btn-social btn-facebook" @click="getUserData()">
-      <i class="fab fa-facebook-f"></i>
-      Entrar com Facebook
+    <button class="btn btn-block btn-social btn-google" @click="getUserData()">
+      <i class="fab fa-google"></i>
+      Entrar com Google
     </button>
   </div>
 </template>
@@ -16,15 +16,19 @@ export default {
   methods: {
     getUserData() {
       this.$AuthService
-        .doFacebookLogin()
+        .doGoogleLogin()
         .then(result => {
           Cookies.set("PERSONAL-TOKEN", result.data.data);
           this.$store.commit("setCurrentUser", jwtDecode(result.data.data));
           this.$router.push({ name: "Usuarios" });
         })
         .catch(error => {
+          console.log(error.message);
+          console.log();
           iziToast.error({
-            title: error.message ? error.message : error.response.data.error,
+            title: error.response.data.error
+              ? error.response.data.error
+              : error.message,
             position: "topCenter"
           });
         });

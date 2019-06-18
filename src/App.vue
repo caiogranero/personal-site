@@ -55,10 +55,10 @@ export default {
         panel: document.getElementById("panel"),
         menu: document.getElementById("menu"),
         padding: 200,
-        tolerance: 70
+        tolerance: 100
       });
 
-      this.slideout = slideout;
+      slideout;
 
       document
         .querySelector(".toggle-button")

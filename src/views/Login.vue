@@ -1,6 +1,5 @@
 <template>
   <div class="login">
-    <!-- <br><br> -->
     <b-container>
       <b-row>
         <b-col md="12">
@@ -26,12 +25,19 @@
               <b-form-input type="password" v-model="form.senha" size="md" required placeholder="Senha">
               </b-form-input>
               <br>
-            <b-button type="submit" variant="primary">
-              ACESSAR
+            <b-button block  type="submit" variant="primary">
+              Entrar
             </b-button>
           </b-form>
           <br>
-          <facebook-button></facebook-button>
+          <b-row>
+            <b-col md="6">
+              <facebook-button></facebook-button>
+            </b-col>
+            <b-col md="6">
+              <google-button></google-button>
+            </b-col>
+          </b-row>
         </b-col>
         <b-col md="5" class="login-image">
           <img src="/img/Kettle_Bell.png">
@@ -43,6 +49,7 @@
 </template>
 
 <script>
+import GoogleButton from "@/components/GoogleButton.vue";
 import FacebookButton from "@/components/FacebookButton.vue";
 import Logo from "@/assets/logo-2.png";
 import Cookies from "js-cookie";
@@ -53,7 +60,8 @@ export default {
   name: "Login",
 
   components: {
-    FacebookButton
+    FacebookButton,
+    GoogleButton
   },
 
   data() {
@@ -77,13 +85,14 @@ export default {
       this.$AuthService
         .doLogin(this.form)
         .then(result => {
+          console.log(result.data.data);
           Cookies.set("PERSONAL-TOKEN", result.data.data);
           this.$store.commit("setCurrentUser", jwtDecode(result.data.data));
           this.$router.push({ name: "Usuarios" });
         })
         .catch(error => {
           iziToast.error({
-            title: error.response.data.error,
+            title: error.message ? error.message : error.response.data.error,
             position: "topCenter"
           });
         });
