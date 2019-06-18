@@ -5,7 +5,10 @@
     <b-container>
       <b-row>
         <b-col md="2">
-          <b-button block @click="goTo()" >Treinos</b-button>
+          <b-button block @click="goTo('treinos')">Treinos</b-button>
+        </b-col>
+        <b-col md="2">
+          <b-button block @click="goTo('avaliacoes')">Avaliações</b-button>
         </b-col>
       </b-row>
     </b-container>
@@ -97,10 +100,10 @@ export default {
 
       this.events[evt.event][evt.type] = true;
     },
-    goTo() {
+    goTo(subRoute) {
       const currentUser = this.$route.params.userId;
 
-      this.$router.push(`/usuarios/${currentUser}/treinos`);
+      this.$router.push(`/usuarios/${currentUser}/${subRoute}`);
     }
   },
 
