@@ -8,29 +8,50 @@
     </b-container>
 
     <b-form @submit="onSubmit">
-      <b-form-group label="Data de nascimento" horizontal :label-cols="4" size="sm">
-        <b-form-input  type="date" v-model="form.nascimento" size="sm"></b-form-input>
+      <b-form-group
+        label="Data de nascimento"
+        horizontal
+        :label-cols="4"
+        size="sm"
+      >
+        <b-form-input
+          type="date"
+          v-model="form.nascimento"
+          size="sm"
+        ></b-form-input>
       </b-form-group>
 
       <b-form-group label="Telefone" horizontal size="sm" :label-cols="4">
-        <the-mask class="form-control form-control-sm" type="tel" :mask="['(##) ####-####', '(##) #####-####']" :masked="true" v-model="form.telefone"/>
+        <the-mask
+          class="form-control form-control-sm"
+          type="tel"
+          :mask="['(##) ####-####', '(##) #####-####']"
+          :masked="true"
+          v-model="form.telefone"
+        />
       </b-form-group>
 
       <b-form-group label="Altura (cm)" horizontal size="sm" :label-cols="4">
-        <b-form-input  type="number" v-model="form.altura" size="sm"></b-form-input>
-      </b-form-group>
-      
-      <b-form-group label="Gênero" horizontal :label-cols="4" size="sm">
-        <b-form-select v-model="form.genero" :options="generos" class="mb-3" size="sm">
-        </b-form-select>
+        <b-form-input
+          type="number"
+          v-model="form.altura"
+          size="sm"
+        ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary" size="sm">
-        ALTERAR
-      </b-button>
+      <b-form-group label="Gênero" horizontal :label-cols="4" size="sm">
+        <b-form-select
+          v-model="form.genero"
+          :options="generos"
+          class="mb-3"
+          size="sm"
+        ></b-form-select>
+      </b-form-group>
+
+      <b-button type="submit" variant="primary" size="sm">ALTERAR</b-button>
     </b-form>
 
-    <br>
+    <br />
   </div>
 </template>
 

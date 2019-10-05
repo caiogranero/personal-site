@@ -1,29 +1,35 @@
 <template>
-		<div id="content">
-			<div id="logo">
-				<b-col md="12">
-					<router-link to="/">
-						<img src="./../assets/logo.png">
-					</router-link>
-				</b-col>
-			</div>
+  <div id="content">
+    <div id="logo">
+      <b-col md="12">
+        <router-link to="/">
+          <img src="./../assets/logo.png" />
+        </router-link>
+      </b-col>
+    </div>
 
-			<div v-for="(route, index) in routes" :key="index" :class="route.class">
-				<b-col md="12">
-					<router-link :to="route.path">
-						<i :class="`fas ${route.icon} fa-2x`" style="color: rgb(228, 228, 228)"></i> 
-					</router-link>
-				</b-col>
-			</div>
+    <div v-for="(route, index) in routes" :key="index" :class="route.class">
+      <b-col md="12">
+        <router-link :to="route.path">
+          <i
+            :class="`fas ${route.icon} fa-2x`"
+            style="color: rgb(228, 228, 228)"
+          ></i>
+        </router-link>
+      </b-col>
+    </div>
 
-      <div class="route" id="logout">
-				<b-col md="12">
-					<a @click="logout">
-						<i class="fas fa-sign-out-alt fa-2x" style="color: rgb(228, 228, 228)"></i> 
-					</a>
-				</b-col>
-			</div>
-		</div>
+    <div class="route" id="logout">
+      <b-col md="12">
+        <a @click="logout">
+          <i
+            class="fas fa-sign-out-alt fa-2x"
+            style="color: rgb(228, 228, 228)"
+          ></i>
+        </a>
+      </b-col>
+    </div>
+  </div>
 </template>
 
 <script>

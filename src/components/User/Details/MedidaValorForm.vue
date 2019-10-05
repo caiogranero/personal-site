@@ -13,31 +13,34 @@
           <label for="input-small">Medida:</label>
         </b-col>
         <b-col sm="10">
-          <v-select 
-            label="nome" 
+          <v-select
+            label="nome"
             v-model="form.medida"
-            :filterable="false" 
-            :options="medidas" 
-            @search="onSearch">
-          </v-select>
+            :filterable="false"
+            :options="medidas"
+            @search="onSearch"
+          ></v-select>
         </b-col>
       </b-row>
     </b-container>
-    <hr>
+    <hr />
     <b-form @submit="onSubmit" v-show="form.medida">
       <b-form-group id="nameInputGroup" label="Valor:" horizontal size="sm">
-        <b-form-input id="nameInput" type="number" v-model="form.valor" required placeholder="Insira o valor" size="sm">
-        </b-form-input>
+        <b-form-input
+          id="nameInput"
+          type="number"
+          v-model="form.valor"
+          required
+          placeholder="Insira o valor"
+          size="sm"
+        ></b-form-input>
       </b-form-group>
 
       <b-form-group label="Data:" size="sm" horizontal>
-        <b-form-input type="date" v-model="form.data" size="sm">
-        </b-form-input>
+        <b-form-input type="date" v-model="form.data" size="sm"></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">
-        ADICIONAR
-      </b-button>
+      <b-button type="submit" variant="primary">ADICIONAR</b-button>
     </b-form>
   </div>
 </template>

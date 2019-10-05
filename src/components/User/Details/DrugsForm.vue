@@ -9,21 +9,33 @@
 
     <b-form @submit="onSubmit">
       <b-form-group id="nameInputGroup" label="Nome" label-for="nameInput">
-        <b-form-input id="nameInput" type="text" v-model="form.name" required placeholder="Insira o nome">
-        </b-form-input>
+        <b-form-input
+          id="nameInput"
+          type="text"
+          v-model="form.name"
+          required
+          placeholder="Insira o nome"
+        ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="descriptionInputGroup" label="Descrição" label-for="descriptionInput">
-        <b-form-textarea id="descriptionInput" v-model="form.description" placeholder="Insira a descrição" :rows="3" :max-rows="6">
-        </b-form-textarea>
+      <b-form-group
+        id="descriptionInputGroup"
+        label="Descrição"
+        label-for="descriptionInput"
+      >
+        <b-form-textarea
+          id="descriptionInput"
+          v-model="form.description"
+          placeholder="Insira a descrição"
+          :rows="3"
+          :max-rows="6"
+        ></b-form-textarea>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">
-        ADICIONAR
-      </b-button>
+      <b-button type="submit" variant="primary">ADICIONAR</b-button>
     </b-form>
 
-    <br>
+    <br />
   </div>
 </template>
 

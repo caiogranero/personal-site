@@ -5,12 +5,16 @@
         <b-col md="3" sm="12">
           <b-row id="basic" class="text-center">
             <b-col md="4" sm="12">
-              <img :src="user.picture" id="profile"> 
+              <img :src="user.picture" id="profile" />
             </b-col>
             <b-col md="8" sm="12">
-              <h2>{{user.nome}}</h2>
-              <a :href="'mailto:'+user.email"><i class="fas fa-envelope"></i></a><br>
-              <span id="grey">Tel: +55 {{user.telefone}}</span><br>
+              <h2>{{ user.nome }}</h2>
+              <a :href="'mailto:' + user.email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <br />
+              <span id="grey">Tel: +55 {{ user.telefone }}</span>
+              <br />
             </b-col>
           </b-row>
         </b-col>
@@ -18,19 +22,25 @@
         <b-col md="8">
           <b-row id="basic" class="text-center">
             <b-col md="3" style="border-right:1px solid #d0dde2;">
-              <span id="grey">Informações</span><br>
-              <span id="black">{{user.idade}}
-                <i :class="'fas fa-'+user.genero"></i>
-                {{user.nascimento}}</span><br>
-              <span id="black">{{user.altura}}</span>
+              <span id="grey">Informações</span>
+              <br />
+              <span id="black">
+                {{ user.idade }}
+                <i :class="'fas fa-' + user.genero"></i>
+                {{ user.nascimento }}
+              </span>
+              <br />
+              <span id="black">{{ user.altura }}</span>
             </b-col>
             <b-col md="3" style="border-right:1px solid #d0dde2;">
-              <span id="grey">Peso atual</span><br>
-              <span id="black">{{user.peso}}</span>
+              <span id="grey">Peso atual</span>
+              <br />
+              <span id="black">{{ user.peso }}</span>
             </b-col>
             <b-col md="3">
-              <span id="grey">Doenças crônicas</span><br>
-              <span id="black">{{user.doença}}</span>
+              <span id="grey">Doenças crônicas</span>
+              <br />
+              <span id="black">{{ user.doença }}</span>
             </b-col>
             <b-col></b-col>
           </b-row>

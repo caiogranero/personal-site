@@ -6,7 +6,7 @@ import Workout from "./Workout";
 import AuthInstance from "./Auth";
 import Goals from "./Goals";
 import Muscle from "./Muscle";
-
+import Activity from "./Activity";
 export default {
   User,
   Disease,
@@ -15,5 +15,6 @@ export default {
   Workout,
   AuthInstance,
   Goals,
-  Muscle
+  Muscle,
+  Activity
 };

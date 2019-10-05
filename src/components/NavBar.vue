@@ -2,18 +2,27 @@
   <div id="navbar">
     <b-container fluid>
       <b-row align-h="between">
-          <button class="toggle-button" v-show="displayMenu">
-            <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
-          </button>
-          <label v-show="!displayMenu" style="margin-left: 40px;"></label>
-          
-          <h1 :class="titleClass">treine.club</h1>
-          
-          <label v-show="!displayConvidarAluno" style="margin-left: 40px;"></label>
-          <b-button @click="copiarCodigo" type="submit" variant="light" size="sm" id="btn-convitar-aluno" v-show="displayConvidarAluno">
-            CONVIDAR ALUNO
-          </b-button>
-      </b-row>    
+        <button class="toggle-button" v-show="displayMenu">
+          <i class="fas fa-bars clickable" style="font-size: 1.5em;"></i>
+        </button>
+        <label v-show="!displayMenu" style="margin-left: 40px;"></label>
+
+        <h1 :class="titleClass">treine.club</h1>
+
+        <label
+          v-show="!displayConvidarAluno"
+          style="margin-left: 40px;"
+        ></label>
+        <b-button
+          @click="copiarCodigo"
+          type="submit"
+          variant="light"
+          size="sm"
+          id="btn-convitar-aluno"
+          v-show="displayConvidarAluno"
+          >CONVIDAR ALUNO</b-button
+        >
+      </b-row>
     </b-container>
   </div>
 </template>

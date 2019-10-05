@@ -1,13 +1,12 @@
 <template>
-	<div class="select-wrapper">
-		<select class="selectBox">
-		<option>Option 1</option>
-		<option>Option 2</option>
-		<option>Option 3</option>
-		<option>Option 4</option>
-	</select>
-</div>
-
+  <div class="select-wrapper">
+    <select class="selectBox">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+      <option>Option 4</option>
+    </select>
+  </div>
 </template>
 
 <script>

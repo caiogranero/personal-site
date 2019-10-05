@@ -1,8 +1,13 @@
 <template>
   <div>
-    <b-card :class="bgCardClass" bg-variant="primary" text-variant="white">
+    <b-card
+      :class="bgCardClass"
+      bg-variant="primary"
+      text-variant="white"
+      @click="action"
+    >
       <blockquote class="card-blockquote">
-        <p>COSTAS E BICEPS</p>
+        <p>{{ title }}</p>
       </blockquote>
     </b-card>
   </div>
@@ -15,6 +20,14 @@ export default {
     bgColor: {
       type: Number,
       default: 0
+    },
+    title: {
+      type: String,
+      default: ""
+    },
+    action: {
+      type: Function,
+      default: () => {}
     }
   },
   data() {
