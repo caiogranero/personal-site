@@ -7,8 +7,15 @@
       </b-row>
     </b-container>
 
-    <br>
-    <b-table small hover :fields="fields" :items="items" :current-page="page.currentPage" :per-page="page.perPage">
+    <br />
+    <b-table
+      small
+      hover
+      :fields="fields"
+      :items="items"
+      :current-page="page.currentPage"
+      :per-page="page.perPage"
+    >
       <template slot="remover" slot-scope="cell">
         <b-button size="sm" @click="remove(cell.item)">
           <i class="fas fa-minus-circle clickable"></i>
@@ -19,7 +26,13 @@
     <b-container>
       <b-row class="text-center">
         <b-col md="12" class="my-1">
-          <b-pagination align="center" :total-rows="items.length" :per-page="page.perPage" v-model="page.currentPage" class="my-0" />
+          <b-pagination
+            align="center"
+            :total-rows="items.length"
+            :per-page="page.perPage"
+            v-model="page.currentPage"
+            class="my-0"
+          />
         </b-col>
       </b-row>
     </b-container>

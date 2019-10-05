@@ -1,28 +1,37 @@
 <template>
   <div class="listagem-usuario">
-    <br>
+    <br />
     <b-container fluid>
       <b-row>
-        <b-col class="text-left" >
+        <b-col class="text-left">
           <h3>Meus alunos</h3>
         </b-col>
       </b-row>
-    </b-container>  
-    <br>
+    </b-container>
+    <br />
     <b-container fluid>
       <b-row align-h="around">
         <b-col col-md="4" v-for="i in itemsInView" :key="i.id">
-          <b-card >
+          <b-card>
             <b-media>
-              <img :src="i.picture" id="profile" height="64" slot="aside" class="clickable" @click="visualizar(i)">
-              <h5 class="mt-0 text-left clickable" @click="visualizar(i)">{{i.nome}}</h5>
+              <img
+                :src="i.picture"
+                id="profile"
+                height="64"
+                slot="aside"
+                class="clickable"
+                @click="visualizar(i)"
+              />
+              <h5 class="mt-0 text-left clickable" @click="visualizar(i)">
+                {{ i.nome }}
+              </h5>
               <b-row align-h="start">
                 <chip :text="i.peso" backgroundColor="#f1f1f1"></chip>
                 <chip :text="i.gordura" backgroundColor="#f1f1f1"></chip>
               </b-row>
             </b-media>
-          </b-card>  
-          <br>
+          </b-card>
+          <br />
         </b-col>
       </b-row>
     </b-container>
@@ -30,7 +39,14 @@
     <b-container fluid>
       <b-row class="text-center">
         <b-col md="12" class="my-1">
-          <b-pagination @change="changePage" align="center" :total-rows="items.length" :per-page="page.perPage" v-model="page.currentPage" class="my-0" />
+          <b-pagination
+            @change="changePage"
+            align="center"
+            :total-rows="items.length"
+            :per-page="page.perPage"
+            v-model="page.currentPage"
+            class="my-0"
+          />
         </b-col>
       </b-row>
     </b-container>

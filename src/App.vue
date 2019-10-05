@@ -3,14 +3,14 @@
     <nav id="menu">
       <side-bar></side-bar>
     </nav>
-  
+
     <main id="panel">
       <header>
         <nav-bar></nav-bar>
       </header>
 
       <div id="router-content">
-        <router-view/>
+        <router-view />
       </div>
     </main>
   </div>

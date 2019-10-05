@@ -4,17 +4,34 @@
       <b-row align-v="center">
         <b-col sm="12" md="4">
           <b-form-group label="Objetivo" horizontal :label-cols="4" size="sm">
-            <b-form-select :options="objetivos" v-model="treino.objetivo" size="sm"/>
+            <b-form-select
+              :options="objetivos"
+              v-model="treino.objetivo"
+              size="sm"
+            />
           </b-form-group>
         </b-col>
         <b-col sm="12" md="4">
-          <b-form-group label="Data inicio" horizontal :label-cols="4" size="sm">
-            <b-form-input type="date" v-model="treino.dataInicio" size="sm"></b-form-input>
+          <b-form-group
+            label="Data inicio"
+            horizontal
+            :label-cols="4"
+            size="sm"
+          >
+            <b-form-input
+              type="date"
+              v-model="treino.dataInicio"
+              size="sm"
+            ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col sm="12" md="4">
           <b-form-group label="Data fim" horizontal :label-cols="4" size="sm">
-            <b-form-input type="date" v-model="treino.dataFim" size="sm"></b-form-input>
+            <b-form-input
+              type="date"
+              v-model="treino.dataFim"
+              size="sm"
+            ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col sm="12" md="12">
@@ -59,5 +76,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

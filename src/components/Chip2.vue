@@ -1,7 +1,10 @@
 <template>
   <div class="chip" @click="selectEvent">
-    {{text}} <i class="fas fa-angle-double-up"></i> 
-    <i @click="closeEvent" class="fa fa-times" aria-hidden="true" v-if="close">&times;</i>
+    {{ text }}
+    <!--  <i class="fas fa-angle-double-up"></i>  -->
+    <i @click="closeEvent" class="fa fa-times" aria-hidden="true" v-if="close"
+      >&times;</i
+    >
   </div>
 </template>
 
@@ -10,6 +13,11 @@ export default {
   name: "Chip2",
 
   props: {
+    fontSize: {
+      type: String,
+      required: false,
+      default: "12px"
+    },
     text: {
       type: String,
       default: "You know nothing, Jon Snow!",
@@ -56,6 +64,7 @@ export default {
     for (var i = 0; i < chips.length; i++) {
       chips[i].style.color = this.textColor;
       chips[i].style.backgroundColor = this.backgroundColor;
+      chips[i].style.fontSize = this.fontSize;
     }
   },
 
@@ -113,7 +122,7 @@ export default {
   display: inline-block;
   padding: 0 15px;
   height: 20px;
-  font-size: 12px;
+  /* font-size: 12px; */
   line-height: 20px;
   border-radius: 20px;
   margin-left: 10px;

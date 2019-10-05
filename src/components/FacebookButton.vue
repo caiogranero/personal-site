@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button class="btn btn-block btn-social btn-facebook" @click="getUserData()">
+    <button
+      class="btn btn-block btn-social btn-facebook"
+      @click="getUserData()"
+    >
       <i class="fab fa-facebook-f"></i>
       Entrar com Facebook
     </button>

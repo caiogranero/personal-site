@@ -1,7 +1,7 @@
 <template>
   <div class="user-profile">
     <base-info></base-info>
-    <br>
+    <br />
     <b-container>
       <b-row>
         <b-col md="2">
@@ -12,7 +12,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <br>
+    <br />
     <b-container>
       <b-row>
         <b-col md="5" sm="12" class="background-view">
@@ -23,13 +23,19 @@
           <b-row>
             <b-col cols="12">
               <dados-basicos v-if="events.DADOS_BASICOS.view"></dados-basicos>
-              <diseases-form v-if="events.DOENCAS_CRONICAS.insert"></diseases-form>
-              <doencas-lista v-if="events.DOENCAS_CRONICAS.view"></doencas-lista>
+              <diseases-form
+                v-if="events.DOENCAS_CRONICAS.insert"
+              ></diseases-form>
+              <doencas-lista
+                v-if="events.DOENCAS_CRONICAS.view"
+              ></doencas-lista>
               <measure-form v-if="events.MEDIDAS.insert"></measure-form>
               <medida-valor-form v-if="events.MEDIDAS.view"></medida-valor-form>
               <remedios-lista v-if="events.REMEDIOS.view"></remedios-lista>
               <drugs-form v-if="events.REMEDIOS.insert"></drugs-form>
-              <observation-form v-if="events.OBSERVACOES.insert"></observation-form>
+              <observation-form
+                v-if="events.OBSERVACOES.insert"
+              ></observation-form>
             </b-col>
           </b-row>
         </b-col>

@@ -6,6 +6,7 @@ import Login from "./views/Login.vue";
 import Cadastro from "./views/Cadastro.vue";
 import Treinos from "./views/Treinos.vue";
 import Avaliacoes from "./views/Avaliacoes.vue";
+import Anamnese from "./views/Anamnese.vue";
 
 Vue.use(Router);
 
@@ -45,6 +46,11 @@ export default new Router({
       path: "/usuarios/:userId/avaliacoes",
       name: "Avaliacoes",
       component: Avaliacoes
+    },
+    {
+      path: "/usuarios/:userId/avaliacoes/anamnese",
+      name: "Anamnese",
+      component: Anamnese
     }
   ]
 });

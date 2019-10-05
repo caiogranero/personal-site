@@ -1,7 +1,7 @@
 <template>
   <div id="treinos">
     <base-info></base-info>
-    <br>
+    <br />
     <b-container>
       <b-row align-h="center" align-v="center">
         <b-col class="text-right">
@@ -15,13 +15,13 @@
         </b-col>
       </b-row>
     </b-container>
-    <br>
+    <br />
     <treino-base-form></treino-base-form>
 
     <b-container>
       <b-row style="justify-content: space-around;">
         <b-col md="4" sm="12" v-for="(item, index) in grupos" :key="index">
-          <grupo :bgColor="index"></grupo>
+          <grupo :bgColor="index" :title="item.title"></grupo>
         </b-col>
       </b-row>
     </b-container>
@@ -38,7 +38,17 @@ export default {
   components: { BaseInfo, TreinoBaseForm, Grupo },
   data() {
     return {
-      grupos: [{}, {}, {}]
+      grupos: [
+        {
+          title: "Costas e Bíceps 1"
+        },
+        {
+          title: "Costas e Bíceps 2"
+        },
+        {
+          title: "Costas e Bíceps 3"
+        }
+      ]
     };
   },
   created() {},
@@ -46,5 +56,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

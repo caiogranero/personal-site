@@ -1,18 +1,29 @@
 <template>
   <div class="total-info background-view">
     <b-col>
-      <b-row class="one-info text-left" v-for="(oneInfo, index) in infos" :key="index">
+      <b-row
+        class="one-info text-left"
+        v-for="(oneInfo, index) in infos"
+        :key="index"
+      >
         <b-col cols="1" sm="1">
-          <div class="circle">{{oneInfo.qtd}}</div>
+          <div class="circle">{{ oneInfo.qtd }}</div>
         </b-col>
         <b-col cols="8" md="9" sm="6">
-          <span id="black">{{oneInfo.tipo}}</span>
+          <span id="black">{{ oneInfo.tipo }}</span>
         </b-col>
         <b-col cols="1" sm="1">
-          <i v-if="oneInfo.canAdd" class="fas fa-plus-circle clickable" @click="view(oneInfo.event, 'insert')"></i>
+          <i
+            v-if="oneInfo.canAdd"
+            class="fas fa-plus-circle clickable"
+            @click="view(oneInfo.event, 'insert')"
+          ></i>
         </b-col>
         <b-col cols="1" sm="1">
-          <i class="fas fa-eye clickable" @click="view(oneInfo.event, 'view')"></i>
+          <i
+            class="fas fa-eye clickable"
+            @click="view(oneInfo.event, 'view')"
+          ></i>
         </b-col>
       </b-row>
     </b-col>

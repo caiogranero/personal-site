@@ -7,16 +7,19 @@
       </b-row>
     </b-container>
 
-    <br>
+    <br />
     <b-form @submit="onSubmit">
       <b-form-group id="descriptionInputGroup" label-for="descriptionInput">
-        <b-form-textarea id="descriptionInput" v-model="form.description" placeholder="Insira a observação" :rows="3" :max-rows="6">
-        </b-form-textarea>
+        <b-form-textarea
+          id="descriptionInput"
+          v-model="form.description"
+          placeholder="Insira a observação"
+          :rows="3"
+          :max-rows="6"
+        ></b-form-textarea>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">
-        ADICIONAR
-      </b-button>
+      <b-button type="submit" variant="primary">ADICIONAR</b-button>
     </b-form>
   </div>
 </template>
